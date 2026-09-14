@@ -1,0 +1,182 @@
+[
+  {
+    "id": "FAQ-001",
+    "category": "warranty_lookup",
+    "question": "如何查詢我的筆電保固期限?",
+    "answer": "您可以到 ASUS 保固查詢頁面,輸入產品序號並同意隱私權政策後送出,系統會顯示保固到期日,也可以透過 MyASUS APP 查詢。"
+  },
+  {
+    "id": "FAQ-002",
+    "category": "warranty_lookup",
+    "question": "保固到期日是怎麼計算的?",
+    "answer": "若能提供有效購買發票,將以發票日期起算;若無法提供,則以產品首次連網日期起算;若兩者皆無,則以機身序號對應的出廠日期起算。"
+  },
+  {
+    "id": "FAQ-003",
+    "category": "warranty_lookup",
+    "question": "忘記保留購買發票,還能查到保固嗎?",
+    "answer": "可以,系統會改用產品首次連網紀錄或出廠日期估算保固期限,建議盡量上傳購買憑證以更新正確日期。"
+  },
+  {
+    "id": "FAQ-004",
+    "category": "warranty_lookup",
+    "question": "要怎麼上傳購買證明更新保固日期?",
+    "answer": "在查詢保固結果頁面下方點選「更新產品保固日期」,即可上傳購買憑證,部分地區可能不支援此功能。"
+  },
+  {
+    "id": "FAQ-005",
+    "category": "warranty_lookup",
+    "question": "保固查詢頁面找不到我的地區服務怎麼辦?",
+    "answer": "系統會自動偵測您的裝置 IP 所在地區,您可以點擊「切換到服務地區網站」前往正確的國家/地區服務頁面。"
+  },
+  {
+    "id": "FAQ-006",
+    "category": "warranty_lookup",
+    "question": "產品序號打不出來或一直顯示錯誤怎麼辦?",
+    "answer": "請注意容易混淆的字元,例如英文字母 O 與數字 0、字母 I 與數字 1、字母 O 與字母 Q、字母 U 與 V,可以嘗試替換相似字元再試一次。"
+  },
+  {
+    "id": "FAQ-007",
+    "category": "repair_process",
+    "question": "筆電故障要怎麼送修?",
+    "answer": "您可以透過 24 小時線上自助報修服務提出申請,ASUS 會安排快遞到府收送,不需要親自跑一趟維修據點。"
+  },
+  {
+    "id": "FAQ-008",
+    "category": "repair_process",
+    "question": "送修前需要注意什麼?",
+    "answer": "建議先備份重要資料,因為維修過程可能需要拆卸主機板或相連零件,測試時系統可能會被還原至出廠設定。"
+  },
+  {
+    "id": "FAQ-009",
+    "category": "repair_process",
+    "question": "怎麼查詢我的送修進度?",
+    "answer": "可以透過 MyASUS APP 或官網的「查詢維修進度」功能,輸入相關資料查詢目前維修狀態。"
+  },
+  {
+    "id": "FAQ-010",
+    "category": "repair_process",
+    "question": "送修時可以只寄主機,不寄周邊配件嗎?",
+    "answer": "建議取出任何周邊配件與行動儲存裝置(如記憶卡、光碟、隨身碟)再寄送,只送與問題相關的主機本體即可。"
+  },
+  {
+    "id": "FAQ-011",
+    "category": "repair_process",
+    "question": "送修時的包裝有什麼建議?",
+    "answer": "建議使用原始包裝袋包裝產品,運送過程中能提供較好的保護,包裝不當可能導致轉運過程發生損害而無法獲得理賠。"
+  },
+  {
+    "id": "FAQ-012",
+    "category": "repair_process",
+    "question": "我人在外縣市,可以在甲地送修、乙地取件嗎?",
+    "answer": "若您有加購延長保固服務,可以享有甲地送修、乙地取件的便利服務,一般保固範圍內建議洽詢客服確認可行性。"
+  },
+  {
+    "id": "FAQ-013",
+    "category": "repair_process",
+    "question": "螢幕(LCD)送修有特別的包裝規定嗎?",
+    "answer": "大尺寸螢幕(32 吋以上)送修需要申請專用保內送修箱材,建議送修前先參考官網的包裝說明或聯繫客服協助。"
+  },
+  {
+    "id": "FAQ-014",
+    "category": "repair_process",
+    "question": "送修大概要多久才能拿到?",
+    "answer": "實際維修時間依故障類型與零件庫存而定,建議送修後透過查詢維修進度功能追蹤實際狀態。"
+  },
+  {
+    "id": "FAQ-015",
+    "category": "warranty_exclusions",
+    "question": "哪些情況不在保固範圍內?",
+    "answer": "若產品曾被非授權人員自行修改或維修、保固貼紙封條破損或被更換、因人為不當使用或天災等不可抗力造成損壞,這些情況將不在保固範圍內。"
+  },
+  {
+    "id": "FAQ-016",
+    "category": "warranty_exclusions",
+    "question": "電腦中毒導致故障,可以保固維修嗎?",
+    "answer": "由電腦病毒引起的問題與故障,以及維修過程中可能造成的軟體或資料遺失,不在保固範圍內,建議平時定期備份重要資料。"
+  },
+  {
+    "id": "FAQ-017",
+    "category": "warranty_exclusions",
+    "question": "用了非原廠配件導致故障,還能保固嗎?",
+    "answer": "因使用非 ASUS 認可的配件或零組件所造成的損害,不在保固服務範圍內。"
+  },
+  {
+    "id": "FAQ-018",
+    "category": "warranty_exclusions",
+    "question": "忘記安裝密碼把自己鎖在外面,算保固範圍嗎?",
+    "answer": "因忘記或遺失安全密碼而導致的無法使用問題,不在保固範圍內。"
+  },
+  {
+    "id": "FAQ-019",
+    "category": "warranty_exclusions",
+    "question": "產品進水或受潮可以保固嗎?",
+    "answer": "線路受潮或浸水導致電子零件氧化、鏽蝕的情況,不在保固服務範圍內。"
+  },
+  {
+    "id": "FAQ-020",
+    "category": "warranty_exclusions",
+    "question": "自行安裝解鎖程式後故障了,可以保固嗎?",
+    "answer": "因安裝或使用解鎖裝置程式造成的無法使用或損毀,將導致保固失效,不予保固服務。"
+  },
+  {
+    "id": "FAQ-021",
+    "category": "warranty_exclusions",
+    "question": "保固貼紙不見了會影響保固嗎?",
+    "answer": "會的,保固識別標籤如遭撕毀或無法辨識,將影響您的保固權益,請勿自行撕除或更換原廠保固序號貼紙。"
+  },
+  {
+    "id": "FAQ-022",
+    "category": "extended_warranty",
+    "question": "什麼是延長保固服務?",
+    "answer": "延長保固是原廠提供的加值服務方案,內含免費快遞到府收送服務,以及甲地送修、乙地取件的便利服務。"
+  },
+  {
+    "id": "FAQ-023",
+    "category": "extended_warranty",
+    "question": "延長保固要在什麼時候加購?",
+    "answer": "建議在原廠保固期限內加購延長保固服務,詳細加購時限與方案請洽官網延長保固頁面或客服確認。"
+  },
+  {
+    "id": "FAQ-024",
+    "category": "extended_warranty",
+    "question": "延長保固包含哪些原廠支援?",
+    "answer": "延長保固內提供免費快遞到府收送服務,以及甲地送修、乙地取件的便利安排。"
+  },
+  {
+    "id": "FAQ-025",
+    "category": "extended_warranty",
+    "question": "延長保固可以在任何地區使用嗎?",
+    "answer": "延長保固服務範圍依購買地區與方案而定,建議透過客服專線或官網確認您所在地區的服務內容。"
+  },
+  {
+    "id": "FAQ-026",
+    "category": "customer_service",
+    "question": "客服專線的服務時間是什麼時候?",
+    "answer": "客服專線服務時間為週一至週六 09:00 至 18:00,電話為 0800-093-456。"
+  },
+  {
+    "id": "FAQ-027",
+    "category": "customer_service",
+    "question": "MyASUS APP 可以做什麼?",
+    "answer": "MyASUS APP 提供保固查詢、維修進度追蹤等服務,可以更方便地管理您的產品售後服務,建議下載使用。"
+  },
+  {
+    "id": "FAQ-028",
+    "category": "customer_service",
+    "question": "保固內提供哪些免費技術支援?",
+    "answer": "在保固期內,透過電話諮詢操作方式、產品相關設定與資訊問題,均無須出示任何服務手冊即可獲得支援。"
+  },
+  {
+    "id": "FAQ-029",
+    "category": "customer_service",
+    "question": "我的商品是非 ASUS 製造的周邊,也能透過 ASUS 查保固嗎?",
+    "answer": "非 ASUS 製造的產品相關資訊僅供參考,建議直接洽詢該產品廠商以瞭解詳細保固內容。"
+  },
+  {
+    "id": "FAQ-030",
+    "category": "customer_service",
+    "question": "如果我的問題這裡都沒有解答,該怎麼辦?",
+    "answer": "建議撥打客服專線 0800-093-456(週一至週六 09:00-18:00),或透過 MyASUS APP 聯繫線上客服協助。"
+  }
+]
