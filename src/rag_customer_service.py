@@ -69,25 +69,45 @@ def answer_query(user_question: str, top_k: int = 2) -> list[dict]:
 
 def interactive_loop() -> None:
     """Run the command-line customer service conversation."""
-    print("ASUS 筆電售後服務客服 Demo (輸入 exit 離開)")
+    print("=====================================")
+    print("ASUS 智慧客服 Demo (RAG-based)")
+    print("=====================================")
+    print("您可以嘗試以下問題:")
+    print("- 如何查詢保固")
+    print("- 電腦中毒了可以送修嗎")
+    print("- 螢幕不會亮要怎麼辦")
+    print("輸入 exit 離開")
+    print("=====================================")
     while True:
         user_question = input("\n請輸入您的問題: ").strip()
         if user_question.lower() == "exit":
             print("感謝使用,再見!")
             break
         if not user_question:
-            print("請輸入問題,或輸入 exit 離開。")
+            print("請輸入問題")
             continue
-        result = answer_query(user_question, top_k=1)[0]
-        score = result["similarity_score"]
-        if score >= SIMILARITY_THRESHOLD:
+
+        results = answer_query(user_question, top_k=2)
+        print("\n使用者輸入:")
+        print(user_question)
+        print("\n檢索過程 (Top-2):")
+        for rank, result in enumerate(results, start=1):
+            print(
+                f"{rank}. {result['faq_id']} | {result['question']} | "
+                f"相似度: {result['similarity_score']:.2f}"
+            )
+
+        best_result = results[0]
+        if best_result["similarity_score"] >= SIMILARITY_THRESHOLD:
             response = (
-                f"{result['answer']}\n\n"
-                f"根據您的問題,以下是相關資訊(相似度:{score:.2f})"
+                f"{best_result['answer']}\n\n"
+                f"根據您的問題,以下是相關資訊"
+                f"(相似度:{best_result['similarity_score']:.2f})"
             )
         else:
             response = FALLBACK_ANSWER
-        print(f"\n客服回答:\n{response}")
+        print(f"\n最終回答:\n{response}")
+        print("\n-------------------------------------")
 
 
 if __name__ == "__main__":
