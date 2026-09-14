@@ -9,11 +9,10 @@ from sentence_transformers import SentenceTransformer
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 EMBEDDINGS_PATH = PROJECT_ROOT / "data" / "faq_embeddings.pkl"
-MODEL_NAME = "all-MiniLM-L6-v2"
+MODEL_NAME = "paraphrase-multilingual-MiniLM-L12-v2"
 SIMILARITY_THRESHOLD = 0.5
 FALLBACK_ANSWER = (
-    "抱歉,目前找不到直接相關的資訊,建議撥打客服專線 0800-093-456 "
-    "或透過 MyASUS APP 聯繫客服"
+    "抱歉,目前找不到直接相關的資訊,建議撥打客服專線 0800-093-456"
 )
 
 
@@ -31,7 +30,7 @@ _MODEL = SentenceTransformer(_INDEX.get("model_name", MODEL_NAME))
 
 
 def retrieve_faqs(user_question: str, top_k: int = 2) -> list[tuple[dict, float]]:
-    """Return the top matching FAQ records and cosine similarity scores."""
+    """Return top matching unique FAQ records and cosine similarity scores."""
     if not user_question.strip():
         raise ValueError("user_question must not be empty")
     if top_k < 1:
@@ -42,25 +41,30 @@ def retrieve_faqs(user_question: str, top_k: int = 2) -> list[tuple[dict, float]
     )[0]
     embeddings = np.asarray(_INDEX["embeddings"])
     scores = embeddings @ query_embedding
-    top_indices = np.argsort(scores)[::-1][:top_k]
-    return [(_INDEX["records"][index], float(scores[index])) for index in top_indices]
+    ranked_indices = np.argsort(scores)[::-1]
+    best_matches = {}
+    for index in ranked_indices:
+        faq = _INDEX["records"][index]
+        faq_id = faq["id"]
+        if faq_id not in best_matches:
+            best_matches[faq_id] = (faq, float(scores[index]))
+        if len(best_matches) == top_k:
+            break
+    return list(best_matches.values())
 
 
-def answer_query(user_question: str, top_k: int = 2) -> str:
-    """Retrieve FAQ context, print retrieval scores, and return a Chinese answer."""
+def answer_query(user_question: str, top_k: int = 2) -> list[dict]:
+    """Return the top matching FAQs as structured results."""
     results = retrieve_faqs(user_question, top_k)
-    print("\n檢索結果:")
-    for rank, (faq, score) in enumerate(results, start=1):
-        print(f"{rank}. {faq['id']} | 相似度: {score:.2f} | {faq['question']}")
-
-    best_faq, best_score = results[0]
-    if best_score >= SIMILARITY_THRESHOLD:
-        return (
-            f"{best_faq['answer']}\n\n"
-            f"這是根據您的問題,從『{best_faq['question']}』找到的相關資訊"
-            f"(相似度:{best_score:.2f})"
-        )
-    return FALLBACK_ANSWER
+    return [
+        {
+            "faq_id": faq["id"],
+            "question": faq["question"],
+            "answer": faq["answer"],
+            "similarity_score": score,
+        }
+        for faq, score in results
+    ]
 
 
 def interactive_loop() -> None:
@@ -74,7 +78,16 @@ def interactive_loop() -> None:
         if not user_question:
             print("請輸入問題,或輸入 exit 離開。")
             continue
-        print(f"\n客服回答:\n{answer_query(user_question)}")
+        result = answer_query(user_question, top_k=1)[0]
+        score = result["similarity_score"]
+        if score >= SIMILARITY_THRESHOLD:
+            response = (
+                f"{result['answer']}\n\n"
+                f"根據您的問題,以下是相關資訊(相似度:{score:.2f})"
+            )
+        else:
+            response = FALLBACK_ANSWER
+        print(f"\n客服回答:\n{response}")
 
 
 if __name__ == "__main__":

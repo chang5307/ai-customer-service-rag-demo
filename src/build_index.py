@@ -10,7 +10,7 @@ from sentence_transformers import SentenceTransformer
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 FAQ_PATH = PROJECT_ROOT / "data" / "faq.json"
 EMBEDDINGS_PATH = PROJECT_ROOT / "data" / "faq_embeddings.pkl"
-MODEL_NAME = "all-MiniLM-L6-v2"
+MODEL_NAME = "paraphrase-multilingual-MiniLM-L12-v2"
 
 
 def build_index() -> None:
@@ -19,13 +19,29 @@ def build_index() -> None:
         faqs = json.load(file)
 
     model = SentenceTransformer(MODEL_NAME)
-    questions = [faq["question"] for faq in faqs]
-    embeddings = model.encode(questions, convert_to_numpy=True, normalize_embeddings=True)
+    texts_to_encode = []
+    embedding_records = []
+    for faq in faqs:
+        for text in [faq["question"], *faq.get("question_variants", [])]:
+            texts_to_encode.append(text)
+            embedding_records.append(
+                {
+                    "id": faq["id"],
+                    "question": faq["question"],
+                    "answer": faq["answer"],
+                    "category": faq["category"],
+                    "matched_question": text,
+                }
+            )
+
+    embeddings = model.encode(
+        texts_to_encode, convert_to_numpy=True, normalize_embeddings=True
+    )
 
     index = {
         "model_name": MODEL_NAME,
         "embeddings": embeddings,
-        "records": faqs,
+        "records": embedding_records,
     }
     with EMBEDDINGS_PATH.open("wb") as file:
         pickle.dump(index, file)
